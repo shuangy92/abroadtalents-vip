@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hello Spring Boot!</title>
+    <!--/*/ <th:block th:include="fragments/head :: head"/> /*/-->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.4/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen" />
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
+            th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+    <link href="../static/css/core.css"
+          th:href="@{css/core.css}" rel="stylesheet" media="screen"/>
+</head>
+  	<body>
+      	<div class="container-fluid">
+          	<div class="row">
+                <div class="box col-md-6 col-md-offset-3">
+       				<h1 th:if="${account}" th:inline="text">Hello, [[${account.fullName}]]!</h1>
+                    <a href="/admin" class="btn btn-warning">Admin</a>
+                    <a th:if="${account}" th:href="@{/logout}" class="btn btn-danger">Logout</a>
+                </div>
+          	</div>
+      	</div>
+  	</body>
+</html>

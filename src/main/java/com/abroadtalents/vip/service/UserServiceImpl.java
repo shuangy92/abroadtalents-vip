@@ -13,6 +13,7 @@ import com.abroadtalents.vip.service.exception.UserAlreadyExistsException;
 import javax.inject.Inject;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+
 import java.util.List;
 
 @Service
@@ -20,17 +21,17 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
-    private final UserRepository repository;
+    private final UserRepository userRepository;
 
     @Inject
     public UserServiceImpl(final UserRepository repository) {
-        this.repository = repository;
+        this.userRepository = repository;
     }
 
     @Override
     @Transactional
     public User save(@NotNull @Valid final User user) {
-        User existing = repository.findByName(user.getName());
+        User existing = userRepository.findByName(user.getName());
         if (existing != null) {
         	LOGGER.debug("There already exists a user with name={}", user.getName());
             throw new UserAlreadyExistsException(
@@ -38,14 +39,14 @@ public class UserServiceImpl implements UserService {
         } else {
             LOGGER.debug("Created {}", user);
         }
-        return repository.save(user);
+        return userRepository.save(user);
     }
 
     @Override
     @Transactional(readOnly = true)
     public List<User> getList() {
         LOGGER.debug("Retrieving the list of all users");
-        return repository.findAll();
+        return userRepository.findAll();
     }
-
+  
 }
