@@ -16,8 +16,9 @@
       	<div class="container-fluid">
           	<div class="row">
                 <div class="box col-md-6 col-md-offset-3">
-       				<h1 th:if="${account}" th:inline="text">Hello, [[${account.fullName}]]!</h1>
-                    <a href="/admin" class="btn btn-warning">Admin</a>
+       				<h1 th:if="${account}" th:inline="text">Hello, [[${account.fullName}]]!
+       					<a th:if="${user.isAdmin}" href="/admin" class="btn btn-warning">Admin</a>
+       				</h1>       				
                     <a th:if="${account}" th:href="@{/logout}" class="btn btn-danger">Logout</a>
                 </div>
           	</div>

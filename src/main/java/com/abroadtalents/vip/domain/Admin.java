@@ -2,15 +2,14 @@ package com.abroadtalents.vip.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-public class User {
-
+public class Admin {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @NotNull
@@ -22,11 +21,10 @@ public class User {
     @Column(name = "name", nullable = false, updatable = false, unique = true)
     private String name;
 
-    private boolean isAdmin = false;
-    User() {
+    Admin() {
     }
 
-    public User(final String name) {
+    public Admin(final String name) {
         this.name = name;
     }
 
@@ -41,17 +39,9 @@ public class User {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	public boolean getIsAdmin() {
-		return isAdmin;
-	}
-	
-	public void setAdmin() {
-		this.isAdmin = true;
-	}
 
 	@Override
 	public String toString() {
-		return "User [name=" + name + "]";
+		return "Admin [name=" + name + "]";
 	}
 }

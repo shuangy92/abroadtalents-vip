@@ -1,11 +1,14 @@
 com/abroadtalents/vip/config/SpringSecurityWebAppConfig.class
 com/abroadtalents/vip/service/exception/UserAlreadyExistsException.class
 com/abroadtalents/vip/repository/UserRepository.class
+com/abroadtalents/vip/service/MyRequestEventListener.class
 com/abroadtalents/vip/controller/HomeController.class
 com/abroadtalents/vip/service/AdminService.class
 com/abroadtalents/vip/Application.class
 com/abroadtalents/vip/service/UserServiceImpl.class
+com/abroadtalents/vip/domain/Admin.class
 com/abroadtalents/vip/controller/UserController.class
+com/abroadtalents/vip/repository/AdminRepository.class
 com/abroadtalents/vip/service/UserService.class
 com/abroadtalents/vip/controller/RestrictedErrorController.class
 com/abroadtalents/vip/config/Roles.class

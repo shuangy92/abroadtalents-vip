@@ -24,7 +24,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @RequestMapping(value = "/user", method = RequestMethod.POST)
+    /*@RequestMapping(value = "/user", method = RequestMethod.POST)
     public User createUser(@RequestBody @Valid final User user) {
         LOGGER.debug("Received request to create the {}", user);
         return userService.save(user);
@@ -34,7 +34,7 @@ public class UserController {
     public List<User> listUsers() {
         LOGGER.debug("Received request to list all users");
         return userService.getList();
-    }
+    }*/
 
     @ExceptionHandler
     @ResponseStatus(HttpStatus.CONFLICT)
