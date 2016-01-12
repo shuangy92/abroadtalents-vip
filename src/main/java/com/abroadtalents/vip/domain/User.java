@@ -3,8 +3,6 @@ package com.abroadtalents.vip.domain;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -12,14 +10,9 @@ import javax.validation.constraints.Size;
 public class User {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @NotNull
-    @Column(name = "id", nullable = false, updatable = false)
-    private long id;
-
     @NotNull
     @Size(max = 64)
-    @Column(name = "name", nullable = false, updatable = false, unique = true)
+    @Column(name = "name", nullable = false, updatable = false)
     private String name;
 
     private boolean isAdmin = false;
@@ -28,10 +21,6 @@ public class User {
 
     public User(final String name) {
         this.name = name;
-    }
-
-    public long getId() {
-        return id;
     }
 
 	public String getName() {

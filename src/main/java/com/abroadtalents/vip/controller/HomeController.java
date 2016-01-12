@@ -30,13 +30,20 @@ class HomeController {
     		user.setAdmin();
     	} 
     	model.addAttribute("user", user);
+    	model.addAttribute("page", "home");
         return "home";
     }
     
     @RequestMapping("/admin")
-    String admin() {
+    String admin(Model model) {
         adminService.ensureAdmin();
         userService.refreshUserList();
+        model.addAttribute("page", "admin");
         return "admin";
+    }
+    @RequestMapping("/account")
+    String myAccount(Model model) {
+    	model.addAttribute("page", "account");
+        return "account";
     }
 }

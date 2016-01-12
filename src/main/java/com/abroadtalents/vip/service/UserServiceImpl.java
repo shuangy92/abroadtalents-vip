@@ -65,7 +65,7 @@ public class UserServiceImpl implements UserService {
     
     @Transactional
     private User save(@NotNull @Valid final User user) {
-        User existing = userRepository.findByName(user.getName());
+        User existing = userRepository.findOne(user.getName());
         if (existing == null) {
             LOGGER.debug("Added {}", user);
             return userRepository.save(user);

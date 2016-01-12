@@ -13,9 +13,17 @@
           th:href="@{css/core.css}" rel="stylesheet" media="screen"/>
 </head>
   	<body>
+	  	<div class="navbar navbar-static navbar-default navbar-fixed-top">
+	      <div class="container-fluid">
+	        <div class="navbar-header">
+	          <a class="navbar-brand" href="#">Abroadtalents-Vip</a>
+	        </div>
+	      </div>
+	    </div>
       	<div class="container-fluid">
           	<div class="row">
-                <div class="box col-md-6 col-md-offset-3">
+          	    <div th:replace="fragments/left-sidebar :: left-sidebar"></div>
+                <div class="col-sm-9">
        				<h1 th:if="${account}" th:inline="text">Hello, [[${account.fullName}]]!
        					<a th:if="${user.isAdmin}" href="/admin" class="btn btn-warning">Admin</a>
        				</h1>       				
