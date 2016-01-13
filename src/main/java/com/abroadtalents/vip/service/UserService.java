@@ -9,5 +9,5 @@ public interface UserService {
     List<User> getList();
     String getUsername(Account account);
     void refreshUserList();
-    User addUser(Account account);
+    User addUser(String name);
 }

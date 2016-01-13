@@ -1,21 +1,27 @@
 package com.abroadtalents.vip.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 
 @Entity
-public class User {
+@Table(name = "User")
+public class User implements Serializable {
+	private static final long serialVersionUID = 1L;
 
     @Id
-    @NotNull
     @Size(max = 64)
     @Column(name = "name", nullable = false, updatable = false)
     private String name;
 
+    @Transient
     private boolean isAdmin = false;
+    
     User() {
     }
 

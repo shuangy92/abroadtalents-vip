@@ -23,27 +23,42 @@ class HomeController {
     private HttpServletRequest servletRequest;
     
     @RequestMapping("/")
-    String home(Model model) {    	
-    	Account account = AccountResolver.INSTANCE.getRequiredAccount(servletRequest);
-    	User user = userService.addUser(account);
-    	if (adminService.isAdmin(account)) {
-    		user.setAdmin();
-    	} 
-    	model.addAttribute("user", user);
+    String home(Model model) throws Exception {    	
+    	setUserAttribute(model);
     	model.addAttribute("page", "home");
         return "home";
     }
     
     @RequestMapping("/admin")
-    String admin(Model model) {
+    String admin(Model model) throws Exception {
         adminService.ensureAdmin();
         userService.refreshUserList();
+        setUserAttribute(model);
         model.addAttribute("page", "admin");
         return "admin";
     }
     @RequestMapping("/account")
-    String myAccount(Model model) {
+    String myAccount(Model model) throws Exception {
+    	setUserAttribute(model);
     	model.addAttribute("page", "account");
         return "account";
+    }
+    @RequestMapping("/report")
+    String report(Model model) throws Exception {
+    	setUserAttribute(model);
+    	model.addAttribute("page", "report");
+        return "report";
+    }
+    
+    private void setUserAttribute(Model model) throws Exception {
+    	Account account = AccountResolver.INSTANCE.getRequiredAccount(servletRequest);
+    	if (account == null) {
+    		throw new Exception("Failed to retrieve user account");
+    	} 
+		User user = userService.addUser(account.getUsername());
+    	if (adminService.isAdmin(account)) {
+    		user.setAdmin();
+    	} 
+    	model.addAttribute("user", user);
     }
 }
