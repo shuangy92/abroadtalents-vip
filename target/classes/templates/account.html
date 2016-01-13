@@ -25,7 +25,6 @@
           	    <div th:replace="fragments/left-sidebar :: left-sidebar"></div>
                 <div class="col-sm-9">
        				<h1 th:if="${account}" th:inline="text">My Account</h1>       				
-                    <a th:if="${account}" th:href="@{/logout}" class="btn btn-danger">Logout</a>
                 </div>
           	</div>
       	</div>

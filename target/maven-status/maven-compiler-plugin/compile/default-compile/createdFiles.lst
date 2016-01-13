@@ -8,7 +8,10 @@ com/abroadtalents/vip/Application.class
 com/abroadtalents/vip/service/UserServiceImpl.class
 com/abroadtalents/vip/domain/Admin.class
 com/abroadtalents/vip/controller/UserController.class
+com/abroadtalents/vip/domain/UserClicksToday.class
 com/abroadtalents/vip/repository/AdminRepository.class
+com/abroadtalents/vip/domain/UserClicksPK.class
+com/abroadtalents/vip/domain/UserClicks.class
 com/abroadtalents/vip/service/UserService.class
 com/abroadtalents/vip/controller/RestrictedErrorController.class
 com/abroadtalents/vip/config/Roles.class

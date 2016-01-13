@@ -1,6 +1,7 @@
 /Users/peps/Documents/Developer/AIC/vip/src/main/java/com/abroadtalents/vip/domain/User.java
 /Users/peps/Documents/Developer/AIC/vip/src/main/java/com/abroadtalents/vip/domain/Admin.java
 /Users/peps/Documents/Developer/AIC/vip/src/main/java/com/abroadtalents/vip/service/UserService.java
+/Users/peps/Documents/Developer/AIC/vip/src/main/java/com/abroadtalents/vip/domain/UserClicksToday.java
 /Users/peps/Documents/Developer/AIC/vip/src/main/java/com/abroadtalents/vip/repository/UserRepository.java
 /Users/peps/Documents/Developer/AIC/vip/src/main/java/com/abroadtalents/vip/service/AdminService.java
 /Users/peps/Documents/Developer/AIC/vip/src/main/java/com/abroadtalents/vip/service/exception/UserAlreadyExistsException.java
