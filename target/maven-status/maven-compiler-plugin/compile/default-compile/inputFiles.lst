@@ -15,4 +15,8 @@
 /Users/peps/Documents/Developer/AIC/vip/src/main/java/com/abroadtalents/vip/config/Roles.java
 /Users/peps/Documents/Developer/AIC/vip/src/main/java/com/abroadtalents/vip/controller/RestrictedErrorController.java
 /Users/peps/Documents/Developer/AIC/vip/src/main/java/com/abroadtalents/vip/domain/UserClicks.java
+/Users/peps/Documents/Developer/AIC/vip/src/main/java/com/abroadtalents/vip/repository/UserClicksTodayRepository.java
+/Users/peps/Documents/Developer/AIC/vip/src/main/java/com/abroadtalents/vip/service/UserClicksTodayServiceImpl.java
 /Users/peps/Documents/Developer/AIC/vip/src/main/java/com/abroadtalents/vip/controller/HomeController.java
+/Users/peps/Documents/Developer/AIC/vip/src/main/java/com/abroadtalents/vip/repository/UserClicksRepository.java
+/Users/peps/Documents/Developer/AIC/vip/src/main/java/com/abroadtalents/vip/service/UserClicksTodayService.java
