@@ -38,9 +38,9 @@ public class UserClicks implements Serializable {
     UserClicks() {
     }
 
-    public UserClicks(final String username, final Date date, final int clicks) {
-    	User user = new User(username);
+    public UserClicks(final User user, final Date date, final int clicks) {
         this.user = user;
+        this.username = user.getName();
         this.date = date;
         this.clicks = clicks;
     }
@@ -51,23 +51,6 @@ public class UserClicks implements Serializable {
 
 	public void setUser(User user) {
 		this.user = user;
-		this.username = user.getName();
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
 	}
 
 	public int getClicks() {

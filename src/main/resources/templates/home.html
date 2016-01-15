@@ -4,30 +4,47 @@
     <title>Hello Spring Boot!</title>
     <!--/*/ <th:block th:include="fragments/head :: head"/> /*/-->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
-          th:href="@{/webjars/bootstrap/3.3.4/css/bootstrap.min.css}"
-          rel="stylesheet" media="screen" />
-    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
-            th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
     <link href="../static/css/core.css"
           th:href="@{css/core.css}" rel="stylesheet" media="screen"/>
 </head>
-  	<body>
-	  	<div class="navbar navbar-static navbar-default navbar-fixed-top">
-	      <div class="container-fluid">
-	        <div class="navbar-header">
-	          <a class="navbar-brand" href="#">Abroadtalents-Vip</a>
-	        </div>
-	      </div>
-	    </div>
-      	<div class="container-fluid">
-          	<div class="row">
-          	    <div th:replace="fragments/left-sidebar :: left-sidebar"></div>
-                <div class="col-sm-9">
-       				<h1 th:if="${account}" th:inline="text">Hello, [[${account.fullName}]]!</h1>  
-       				<a href="#" class="btn btn-warning">Click Me</a>     				
-                </div>
-          	</div>
-      	</div>
-  	</body>
+<body>
+    <div class="navbar navbar-static navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Abroadtalents-Vip</a>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div th:replace="fragments/left-sidebar :: left-sidebar"></div>
+            <div class="col-sm-9">
+                <h1 th:if="${account}" th:inline="text">Hello, [[${account.fullName}]]!</h1>
+                <a class="btn btn-warning" id="click-me">Click Me</a>
+                <!-- <table>
+                    <tr th:each="var : ${#vars}">
+                        <td th:text="${var.key}"></td>
+                        <td th:text="${var.value}"></td>
+                    </tr>
+                </table> -->
+            </div>
+        </div>
+    </div>
+	<script type="text/javascript" th:inline="javascript">
+	    jQuery(document).ready(function($) {
+	        $("#click-me").click(function() {
+	            updateClicks();
+	        });
+	    });
+	    
+	    function updateClicks() {
+	        var url = '/click';
+			var dataObject =  {"username":[[${account.username}]], [[${_csrf.parameterName}]]:[[${_csrf.token}]]};
+	        $.post(url, dataObject)
+	        .done(function( data ) {
+	            alert( "Data Loaded: " + data );
+	          });
+	    }
+	</script>
+</body>
 </html>
