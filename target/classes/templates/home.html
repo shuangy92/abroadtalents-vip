@@ -41,8 +41,9 @@
 	        var url = '/click';
 			var dataObject =  {"username":[[${account.username}]], [[${_csrf.parameterName}]]:[[${_csrf.token}]]};
 	        $.post(url, dataObject)
-	        .done(function( data ) {
-	            alert( "Data Loaded: " + data );
+	        .done(function() {
+	        	var count = parseInt($("#click-count").text()) + 1;
+	            $("#click-count").text(count);
 	          });
 	    }
 	</script>

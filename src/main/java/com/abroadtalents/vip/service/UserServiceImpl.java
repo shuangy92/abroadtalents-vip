@@ -13,7 +13,6 @@ import javax.inject.Inject;
 
 import java.util.List;
 
-import com.stormpath.sdk.client.Client;
 import com.stormpath.sdk.account.Account;
 import com.stormpath.sdk.account.AccountList;
 import com.stormpath.sdk.application.*;
@@ -25,8 +24,6 @@ public class UserServiceImpl implements UserService {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
     private final UserRepository userRepository;
     
-    @Inject
-    private Client client;
     @Inject
     private Application application;
     

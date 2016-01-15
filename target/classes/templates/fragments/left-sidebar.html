@@ -26,7 +26,7 @@
             <li th:if="${user.isAdmin}" th:classappend="${page == 'messages' ? 'active' : ''}"><a href="#=" th:href="@{/admin}">Admin Dashboard</a></li>
             <li th:classappend="${page == 'account' ? 'active' : ''}"><a href="#=" th:href="@{/account}">My Account</a></li>
             <li th:classappend="${page == 'report' ? 'active' : ''}"><a href="#=" th:href="@{/report}">Report</a></li>
-            <li><a href="#">Click Count:  <span class="badge" id="click-count">1,118</span></a></li>
+            <li th:inline="text"><a href="#">Today's Click Count:  <span class="badge" id="click-count" th:text="${user.clicksToday}">x</span></a></li>
             <li th:classappend="${page == 'logout' ? 'active' : ''}"><a href="#=" th:href="@{/logout}">Logout</a></li>
           </ul>
         </div><!--/.nav-collapse -->

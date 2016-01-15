@@ -22,6 +22,9 @@ public class User implements Serializable {
     @Transient
     private boolean isAdmin = false;
     
+    @Transient
+    private int clicksToday;
+    
     User() {
     }
 
@@ -44,9 +47,33 @@ public class User implements Serializable {
 	public void setAdmin() {
 		this.isAdmin = true;
 	}
+	
+	public int getClicksToday() {
+		return clicksToday;
+	}
+
+	public void setClicksToday(int clicksToday) {
+		this.clicksToday = clicksToday;
+	}
 
 	@Override
 	public String toString() {
 		return "User [name=" + name + "]";
 	}
+
+	@Override
+	public int hashCode() {
+		return name.hashCode();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+        if (obj instanceof User) {
+        	User other = (User)obj;
+        	return (name.equals(other.name));
+        } else {
+        	return false;
+        }
+	}
+
 }
