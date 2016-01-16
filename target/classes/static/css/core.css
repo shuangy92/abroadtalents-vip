@@ -1,5 +1,5 @@
-/* make sidebar nav vertical */ 
 @media (min-width: 768px) {
+	/* make sidebar nav vertical */ 
   .sidebar-nav .navbar .navbar-collapse {
     padding: 0;
     max-height: none;
@@ -17,5 +17,10 @@
   .sidebar-nav .navbar li a {
     padding-top: 12px;
     padding-bottom: 12px;
+  }
+  
+  /* search button */
+  #findjobs {
+  	width: 150px;
   }
 }

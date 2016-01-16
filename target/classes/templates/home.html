@@ -21,6 +21,8 @@
             <div class="col-sm-9">
                 <h1 th:if="${account}" th:inline="text">Hello, [[${account.fullName}]]!</h1>
                 <a class="btn btn-warning" id="click-me">Click Me</a>
+                <div th:replace="fragments/indeed-searchbar :: indeed-searchbar"></div>
+                
                 <!-- <table>
                     <tr th:each="var : ${#vars}">
                         <td th:text="${var.key}"></td>
@@ -39,8 +41,8 @@
 	    
 	    function updateClicks() {
 	        var url = '/click';
-			var dataObject =  {"username":[[${account.username}]], [[${_csrf.parameterName}]]:[[${_csrf.token}]]};
-	        $.post(url, dataObject)
+			var data =  {"username":[[${account.username}]], [[${_csrf.parameterName}]]:[[${_csrf.token}]]};
+	        $.post(url, data)
 	        .done(function() {
 	        	var count = parseInt($("#click-count").text()) + 1;
 	            $("#click-count").text(count);

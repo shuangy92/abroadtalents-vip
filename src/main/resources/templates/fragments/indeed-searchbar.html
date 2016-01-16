@@ -8,30 +8,77 @@
           th:href="@{css/core.css}" rel="stylesheet" media="screen"/>
 </head>
 <body>
-  <div class="col-sm-3" th:fragment="left-sidebar">
-    <div class="sidebar-nav">
-      <div class="navbar navbar-default" role="navigation">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <span class="visible-xs navbar-brand">Menu</span>
-        </div>
-        <div class="navbar-collapse collapse sidebar-navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li th:classappend="${page == 'home' ? 'active' : ''}"><a href="#=" th:href="@{/}">Home</a></li>
-            <li th:if="${user.isAdmin}" th:classappend="${page == 'messages' ? 'active' : ''}"><a href="#=" th:href="@{/admin}">Admin Dashboard</a></li>
-            <li th:classappend="${page == 'account' ? 'active' : ''}"><a href="#=" th:href="@{/account}">My Account</a></li>
-            <li th:classappend="${page == 'report' ? 'active' : ''}"><a href="#=" th:href="@{/report}">Report</a></li>
-            <li th:inline="text"><a href="#">Today's Click Count:  <span class="badge" id="click-count" th:text="${user.clicksToday}">x</span></a></li>
-            <li th:classappend="${page == 'logout' ? 'active' : ''}"><a href="#=" th:href="@{/logout}">Logout</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
+  	<div class="search" th:fragment="indeed-searchbar">
+  		<div id="indeed-search-wrapper" class="row">
+			<form id="indeed-jobform">
+				<div id="qc" class="col-sm-4">
+	 				<input type="text" placeholder="job title" name="q" id="q" class="form-control" />
+				</div>
+				<div id="lc" class="col-sm-4">
+					<input type="text" placeholder="city, state, or zip" name="l" id="l" class="form-control" />
+				</div>
+				<div id="findjobs" class="col-sm-3">
+					<input type="submit" value="Find Jobs" class="btn btn-primary form-control"/>
+				</div>
+			</form>
+		<div class="jobs"></div>
+	</div>
+	<script type="text/javascript" th:inline="javascript">
+		var form = $("#indeed-jobform");
+		$(form).submit(function(event) {
+		    // Stop the browser from submitting the form.
+		    event.preventDefault();
+		    $('.jobs').html('');
+		    var formData = $(form).serializeArray();
+		    var appendDate = [{"name":"publisher","value":"8808475094207261" }, 
+		                      {"name":"v","value": "2"}, 
+		                      {"name":"format","value": "json"}, 
+		                      {"name":"sort","value": "relevance"},
+		                      {"name":"radius","value": "25"},
+		                      {"name":"start","value": "0"},
+		                      {"name":"limit","value": "10"}];
+		    $.merge(formData, appendDate);
+		    $.ajax({
+		        type: "GET",
+		        url: "http://api.indeed.com/ads/apisearch",
+		        dataType: "json",
+		        data: formData
+		    }).done(function(response) {
+			    // Make sure that the formMessages div has the 'success' class.
+			    //$(formMessages).removeClass('error');
+			    //$(formMessages).addClass('success');
+			
+			    // Set the message text.
+			    //$(formMessages).text(response);
+				
+			    // Clear the form.
+			    $('#q').val('');
+			    $('#l').val('');
+			    var totalresults = response.totalresults;
+			    var jobs = response.results;
+			    jobs.forEach(function(job) {
+			    	job_handler(job);
+			    });
+			    console.log(jobs);
+			}).fail(function()  {
+			    
+			}); 
+		});
+		function job_handler(job) {
+			var jobtitle = job.jobtitle;
+			var company = job.company;
+			var location = job.formattedLocation;
+			var sponsored = job.sponsored;
+			var url = job.url;
+			var job_row = 
+                '<div class="row col-sm-12">' +
+                '<div class="position col-xs-6">' + jobtitle + '<div class="company">' + company + '</div></div>' +
+                '<div class="location col-xs-6">' + location + '</div></div>'
+            $(".jobs").append(job_row);
+			//alert(job_row);
+
+		}
+	</script>
   </div>
 </body>
 </html>
