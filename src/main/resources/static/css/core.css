@@ -18,9 +18,22 @@
     padding-top: 12px;
     padding-bottom: 12px;
   }
-  
-  /* search button */
-  #findjobs {
-  	width: 150px;
-  }
+}
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+.search .row {
+  	padding-top:10px;
+	padding-bottom:10px;
+}
+#indeed-search-wrapper {
+	background-color: green;
+}
+.jobs .job.row {
+	border: 1px solid gray;
+	border-bottom: none;
+}
+li.job:last-child {
+	border-bottom: 1px solid gray !important;
 }

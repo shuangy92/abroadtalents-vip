@@ -8,10 +8,10 @@
           th:href="@{css/core.css}" rel="stylesheet" media="screen"/>
 </head>
 <body>
-  	<div class="search" th:fragment="indeed-searchbar">
-  		<div id="indeed-search-wrapper" class="row">
+  	<div class="search col-sm-11" th:fragment="indeed-searchbar">
+  		<div id="indeed-search-wrapper" class="row col-sm-12">
 			<form id="indeed-jobform">
-				<div id="qc" class="col-sm-4">
+				<div id="qc" class="col-sm-5">
 	 				<input type="text" placeholder="job title" name="q" id="q" class="form-control" />
 				</div>
 				<div id="lc" class="col-sm-4">
@@ -21,8 +21,9 @@
 					<input type="submit" value="Find Jobs" class="btn btn-primary form-control"/>
 				</div>
 			</form>
-		<div class="jobs"></div>
-	</div>
+		</div>
+		<ul class="jobs"></ul>
+
 	<script type="text/javascript" th:inline="javascript">
 		var form = $("#indeed-jobform");
 		$(form).submit(function(event) {
@@ -57,7 +58,9 @@
 			    var totalresults = response.totalresults;
 			    var jobs = response.results;
 			    jobs.forEach(function(job) {
-			    	job_handler(job);
+			    	//if (job.sponsored == "true") {
+			    		job_handler(job);;
+			    	//}
 			    });
 			    console.log(jobs);
 			}).fail(function()  {
@@ -71,12 +74,10 @@
 			var sponsored = job.sponsored;
 			var url = job.url;
 			var job_row = 
-                '<div class="row col-sm-12">' +
-                '<div class="position col-xs-6">' + jobtitle + '<div class="company">' + company + '</div></div>' +
-                '<div class="location col-xs-6">' + location + '</div></div>'
+                '<li class="job row col-sm-12">' + '<a href="' + url +'">' + 
+                '<div class="position col-xs-8">' + jobtitle + '<div class="company">' + company + '</div></div>' +
+                '<div class="location col-xs-4">' + location + '</div></a></li>'
             $(".jobs").append(job_row);
-			//alert(job_row);
-
 		}
 	</script>
   </div>
